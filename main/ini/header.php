@@ -1,14 +1,14 @@
 <?php 
 session_start();
 if(isset($_SESSION['email'])){
-	$id = $_SESSION['id'];
+    $id = $_SESSION['id'];
     include('dbcon.php');
     $sql = "SELECT * FROM user WHERE id = $id";
     $exe = mysqli_query($con,$sql);
     $data = mysqli_fetch_assoc($exe);
 }
 else{
-	header('location: ../index.php');
+    header('location: ../index.php');
 }
 ?>
 <!DOCTYPE html>
