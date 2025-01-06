@@ -83,7 +83,6 @@ else{
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
 
             <?php if($data['supp']==1){ ?>
              <li class="nav-item">

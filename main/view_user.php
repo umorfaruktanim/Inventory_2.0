@@ -34,7 +34,7 @@ $data = mysqli_fetch_assoc($exe);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<a href="u_request.php" class="mt-3 col-md-2"><i class="material-icons" style="font-size:36px">keyboard_backspace</i></i></a>
+	<a href="all_user.php" class="mt-3 col-md-2"><i class="material-icons" style="font-size:36px">keyboard_backspace</i></i></a>
 	<div class="pheader mt-4">
 	<div class="row">
 		<div class="col-md-2 float-left">
@@ -87,10 +87,6 @@ $data = mysqli_fetch_assoc($exe);
 			<td><?php echo $data['phone'] ?></td>
 		</tr>
 		<tr>
-			<td class="font-weight-bold">Guardain Phone</td>
-			<td><?php echo $data['g_phone'] ?></td>
-		</tr>
-		<tr>
 		</tr>
 	</table>
 	<p class="text-danger text-center" style="font-size: 24px;">Address</p>
@@ -123,15 +119,9 @@ $data = mysqli_fetch_assoc($exe);
 			<td><?php echo $data['email'] ?></td>
 		</tr>
 	</table>
+	<a href="edit_user.php?id=<?php echo $data['id']?>" class="btn btn-info form-control"><i class="fa fa-edit me-2 text-dark text-center"></i></a>
 </div>
-<div class="row mt-2">
-	<div class="col-md-6">
-		<a href="approve.php?id=<?php echo $data['id']; ?>" class="btn btn-success btn-sm form-control"><i class='fas fa-check-circle' style="font-size: 22px"></i></a>
-	</div>
-	<div class="col-md-6">
-		<a href="decline.php?id=<?php echo $data['id']; ?>" class="btn btn-danger btn-sm form-control"><i class="fa fa-close" style="font-size: 22px"></i></a>
-	</div>
-</div>
+
 
 
 </body>
