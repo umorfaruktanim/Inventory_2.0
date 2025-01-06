@@ -1,8 +1,8 @@
 <?php 
-$idd = $_GET['id'];
+$idd = $_GET['exc_id'];
 include('ini/header.php');
 include('dbcon.php');
-$sql = "SELECT * FROM category WHERE cat_id = $idd";
+$sql = "SELECT * FROM ex_category WHERE exc_id = $idd";
 $run = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($run);
 ?>
@@ -13,7 +13,7 @@ $data = mysqli_fetch_assoc($run);
                 <div class="card-body">
                     	<form method="post" action="" enctype="multipart/form-data" class="container">
                                 <label class="form-group">Category Name :</label>
-       							<input type="text" name="cat_name" required="" value="<?php echo $data['cat_name'] ?>" class="form-control"><br>
+       							<input type="text" name="e_cat_name" required="" value="<?php echo $data['e_cat_name'] ?>" class="form-control"><br>
                                
                                 <input type="submit" name="submit" class="btn btn-success form-control">
                             </form>
@@ -26,9 +26,9 @@ $data = mysqli_fetch_assoc($run);
 <?php
 include('ini/footer.php');
  if ((isset($_POST['submit']))) {
-	$cat_name = $_POST['cat_name'];
+	$e_cat_name = $_POST['e_cat_name'];
 
-	$sql = "UPDATE category SET cat_name = '$cat_name' WHERE cat_id = $idd";
+	$sql = "UPDATE ex_category SET e_cat_name = '$e_cat_name' WHERE exc_id = $idd";
 
 	include('dbcon.php');
 	$run = mysqli_query($con,$sql);
@@ -36,7 +36,7 @@ include('ini/footer.php');
 		echo "
 			<script>
 	           window.alert('Updated');
-	           window.open('all_category.php','_self');
+	           window.open('all_excategory.php','_self');
 	        </script>";
 	        
 	}else{
