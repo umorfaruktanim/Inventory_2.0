@@ -83,6 +83,21 @@ else{
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Heading -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pos.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>POS</span>
+                </a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="all_pos.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Customer Invoice</span>
+                </a>
+                
+            </li>
 
             <?php if($data['supp']==1){ ?>
              <li class="nav-item">
@@ -93,13 +108,92 @@ else{
                 
             </li>
         <?php } ?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="add_category.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Add Product Category</span>
+                </a>
+                
+            </li>
 
+           <li class="nav-item">
+                <a class="nav-link collapsed" href="all_category.php">
+                    <i class="fas fa-fw fa-cog"></i>
+
+                    <span>Manage Product Category</span>
+                </a>
+                
+            </li>
             
+           <li class="nav-item">
+                <a class="nav-link collapsed" href="add_cus.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Add Customer</span>
+                </a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="manage_customer.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage Customer</span>
+                </a>
+                
+            </li>
 
-           
+          <li class="nav-item">
+                <a class="nav-link collapsed" href="add_sup.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Add Supplier</span>
+                </a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="view_sup.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage Suplier</span>
+                </a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="add_product.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Add Products</span>
+                </a>
+                
+            </li>
 
-         
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="sup_invoice.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Supplier Invoice</span>
+                </a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="expanse.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Expanse</span>
+                </a>
+                
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="all_product.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage Products</span>
+
+                </a>
+                
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="report.php">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>View Report</span>
+                </a>
+                
+            </li>
             <!-- Nav Item - Utilities Collapse Menu -->
         
 
