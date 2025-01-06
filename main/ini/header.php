@@ -85,7 +85,7 @@ else{
 
             <!-- Heading -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <?php if($data['supp']==1){ ?>
              <li class="nav-item">
                 <a class="nav-link collapsed" href="u_request.php">
                     <i class="fas fa-fw fa-cog"></i>
@@ -93,6 +93,7 @@ else{
                 </a>
                 
             </li>
+        <?php } ?>
 
             
 
