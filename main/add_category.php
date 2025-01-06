@@ -3,7 +3,7 @@ include('ini/header.php');
 ?>
 
                     <!-- Content Row -->
-                    <h2 class="text-center">Add Books Category :</h2>
+                    <h2 class="text-center">Add Product Category :</h2>
                     <div class="row">
                         <div class="col-md-6 offset-3 card text-success" style="background: white; font-weight: bolder;">
                             <div class="card-body">

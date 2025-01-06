@@ -28,7 +28,7 @@ include('ini/footer.php');
  if ((isset($_POST['submit']))) {
 	$cat_name = $_POST['cat_name'];
 
-	$sql = "UPDATE category SET cat_name = '$cat_name' WHERE cat_id = $id";
+	$sql = "UPDATE category SET cat_name = '$cat_name' WHERE cat_id = $idd";
 
 	include('dbcon.php');
 	$run = mysqli_query($con,$sql);
