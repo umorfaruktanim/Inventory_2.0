@@ -40,7 +40,7 @@ $net_profit = $gross_profit - $total_expenses;
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Sales Report</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Profit Report</h6>
         </div>
         <div class="card-body">
             <!-- Date range filter form -->
