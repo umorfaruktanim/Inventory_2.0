@@ -55,37 +55,43 @@ $data = mysqli_fetch_assoc($r);
 
 <?php
 include('ini/footer.php');
+include('dbcon.php');
+
+$pid = $_GET['id'];
+// Fetch the existing product details
+$d = "SELECT * FROM product WHERE id='$pid'";
+$r = mysqli_query($con, $d);
+$data = mysqli_fetch_assoc($r);
 
 if (isset($_POST['submit'])) {
-    $qty = $_POST['qty'];
+    $new_qty = $_POST['qty'];
     $buy_price = $_POST['buy_price'];
     $sell_price = $_POST['sell_price'];
     $paid_ammount = $_POST['paid_ammount'];
     $sup_id = $_POST['sup_id'];
 
-    // Calculate the excess quantity
-    $initial_qty = $data['qty'];
-    $updated_qty = $_POST['qty'];
-    $excess_qty = $updated_qty - $initial_qty;
+    $existing_qty = $data['qty'];
+    $difference_qty = $new_qty - $existing_qty;
     $datee = date("Y-m-d");
 
-    // Update the product table
-    $sql = "UPDATE product SET qty = '$updated_qty', buy_price = '$buy_price', sell_price = '$sell_price', sup_id = '$sup_id' WHERE id = '$pid'";
-    $run = mysqli_query($con, $sql);
+    if ($difference_qty > 0) {
+        // Insert the new quantity as a new row in the product table with the same product code and a new auto-incremented id
+        $sql_insert = "INSERT INTO product (name, code, photo, qty, buy_price, sell_price, sup_id, cat_id)
+                       VALUES ('{$data['name']}', '{$data['code']}', '{$data['photo']}', '$difference_qty', '$buy_price', '$sell_price', '$sup_id', '{$data['cat_id']}')";
+        $run_insert = mysqli_query($con, $sql_insert);
 
-    if ($run) {
-        if ($excess_qty > 0) {
-            // Insert into sup_invoice table
-            $due_amount = ($buy_price * $excess_qty) - $paid_ammount;
+        if ($run_insert) {
+            // Insert into the supplier invoice table
+            $due_amount = ($buy_price * $difference_qty) - $paid_ammount;
             $sql_invoice = "INSERT INTO sup_invoice (product_id, product_name, supp_id, paid_amount, due_amount, qty, code, datee) 
-                            VALUES ('$pid', '{$data['name']}', '$sup_id', '$paid_ammount', '$due_amount', '$excess_qty', '{$data['code']}', '$datee')";
+                            VALUES ('$pid', '{$data['name']}', '$sup_id', '$paid_ammount', '$due_amount', '$difference_qty', '{$data['code']}', '$datee')";
             $run_invoice = mysqli_query($con, $sql_invoice);
 
             if ($run_invoice) {
                 $last_invoice_id = mysqli_insert_id($con);
                 ?>
                 <script>
-                    swal("Success!", "Product updated and excess quantity added to invoice!", "success").then(function() {
+                    swal("Success!", "Product updated, and excess quantity added as a new row!", "success").then(function() {
                         window.location.href = 'supplier_invoice.php?invoice_id=' + <?php echo $last_invoice_id; ?>;
                     });
                 </script>
@@ -93,23 +99,21 @@ if (isset($_POST['submit'])) {
             } else {
                 ?>
                 <script>
-                    swal("Oops!", "Failed to insert into sup_invoice table!", "error");
+                    swal("Oops!", "Failed to insert into supplier invoice table!", "error");
                 </script>
                 <?php
             }
         } else {
             ?>
             <script>
-                swal("Success!", "Product updated successfully!", "success").then(function() {
-                    window.location.href = 'supplier_invoice.php';
-                });
+                swal("Oops!", "Failed to insert new product row!", "error");
             </script>
             <?php
         }
     } else {
         ?>
         <script>
-            swal("Oops!", "Failed to update product!", "error");
+            swal("Error!", "Updated quantity must be greater than the existing quantity.", "error");
         </script>
         <?php
     }
