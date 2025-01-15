@@ -22,10 +22,6 @@ $total_expenses = $expense_row['total_expenses'] ?? 0;
 $net_profit = $gross_profit - $total_expenses;
 
 // Query for total product shortage (qty < 10)
-$shortage_query = "SELECT COUNT(*) AS product_shortage FROM product WHERE qty < 10";
-$shortage_result = mysqli_query($con, $shortage_query);
-$shortage_row = mysqli_fetch_assoc($shortage_result);
-$product_shortage = $shortage_row['product_shortage'] ?? 0;
 
 // Query for total customer due amount
 $customer_due_query = "SELECT SUM(due_amount) AS total_customer_due FROM pos WHERE due_amount > 0";
@@ -107,16 +103,7 @@ $total_supplier_due = $supplier_due_row['total_supplier_due'] ?? 0;
 
     <!-- Row for Customer and Supplier Details -->
     <div class="row mt-4">
-        <!-- Product Shortage -->
-        <div class="col-md-4">
-            <div class="card shadow border-left-danger">
-                <div class="card-body">
-                    <h6 class="text-danger">Product Shortage</h6>
-                    <h4 class="mb-0"><?php echo $product_shortage; ?> products</h4>
-                    <small class="text-muted">Products with quantity < 10</small>
-                </div>
-            </div>
-        </div>
+        
         <!-- Customer Due -->
         <div class="col-md-4">
             <div class="card shadow border-left-secondary">
